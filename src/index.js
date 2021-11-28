@@ -11,7 +11,10 @@ import rootReducer, { rootSaga } from './modules/index';
 import reportWebVitals from './reportWebVitals';
 
 const sagaMiddleware = createSagaMiddleware();
-const store = createStore(rootReducer, composeWithDevTools(sagaMiddleware));
+const store = createStore(
+  rootReducer,
+  composeWithDevTools(applyMiddleware(sagaMiddleware)),
+);
 
 sagaMiddleware.run(rootSaga);
 
